@@ -3,9 +3,7 @@ import { AnswersRepository } from '../repositories/answers-repository'
 import { Answer } from '../../enterprise/entities/answer'
 
 const fakeAnswersRepository: AnswersRepository = {
-  create: async (answer: Answer): Promise<void> => {
-    return
-  },
+  create: async (answer: Answer) => {},
 }
 
 test('Create an answer', async () => {
