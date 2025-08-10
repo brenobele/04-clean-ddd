@@ -28,16 +28,16 @@ describe('Delete Answer Comment', () => {
     expect(inMemoryAnswerCommentsRepository.items).toHaveLength(0)
   })
 
-  it('should not be able to delete another user a answer comment', async () => {
+  it('should not be able to delete another user answer comment', async () => {
     const answerComment = makeAnswerComment({
-      authorId: new UniqueEntityId('another-user-id'),
+      authorId: new UniqueEntityId('author-1'),
     })
 
     await inMemoryAnswerCommentsRepository.create(answerComment)
 
     const result = await sut.execute({
       answerCommentId: answerComment.id.toString(),
-      authorId: new UniqueEntityId('some-other-user-id').toString(),
+      authorId: 'author-2',
     })
 
     expect(result.isLeft()).toBe(true)
